@@ -55,7 +55,7 @@ public class ExamplePlugin extends Plugin
 		{
 			// Send Message to player
 			event.consume();
-			sendChatMessage("You are not allowed to use the grand exhange");
+			sendChatMessage("You are not allowed to use the Grand Exchange");
 			return;
 		}
 
