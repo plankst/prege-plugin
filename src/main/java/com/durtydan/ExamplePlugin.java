@@ -47,26 +47,27 @@ public class ExamplePlugin extends Plugin
 		String target = Text.removeTags(event.getMenuTarget());
 
 		if (entryMatches(event, "Exchange", "Grand Exchange Clerk")
-				|| entryMatches(event, "Exchange", "Grand Exchange booth")
-				|| entryMatches(event, "Collect", "Banker")
-				|| entryMatches(event, "Collect", "Grand Exchange booth")
-				|| entryMatches(event, "Collect", "Bank booth")
 				|| entryMatches(event, "History", "Grand Exchange Clerk")
 				|| entryMatches(event, "Sets", "Grand Exchange Clerk")
-				|| entryMatches(event, "Talk-to", "Grand Exchange Clerk"))
+				|| entryMatches(event, "Talk-to", "Grand Exchange Clerk")
+				|| entryMatches(event, "Exchange", "Grand Exchange booth")
+				|| entryMatches(event, "Collect", "Grand Exchange booth")
+				|| entryMatches(event, "Collect", "Banker")
+				|| entryMatches(event, "Collect", "Bank booth"))
 		{
 			event.consume();
 			return;
+
 		}
 
 		if (entryMatches(event, "Examine", "Grand Exchange Clerk"))
 		{
 			event.consume();
-			sendChatMessage("They're just standing there...");
+			sendChatMessage("You don't seem interested in their business.");
 			return;
+
 		}
 	}
-
 
 	private boolean entryMatches(MenuEntry entry, String option)
 	{
