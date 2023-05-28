@@ -14,7 +14,6 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.util.Text;
 
-//
 @Slf4j
 @PluginDescriptor(
 	name = "Pre-GE"
@@ -51,15 +50,23 @@ public class ExamplePlugin extends Plugin
 				|| entryMatches(event, "Exchange", "Grand Exchange booth")
 				|| entryMatches(event, "Collect", "Banker")
 				|| entryMatches(event, "Collect", "Grand Exchange booth")
-				|| entryMatches(event, "Collect", "Bank booth"))
+				|| entryMatches(event, "Collect", "Bank booth")
+				|| entryMatches(event, "History", "Grand Exchange Clerk")
+				|| entryMatches(event, "Sets", "Grand Exchange Clerk")
+				|| entryMatches(event, "Talk-to", "Grand Exchange Clerk"))
 		{
-			// Send Message to player
 			event.consume();
-			sendChatMessage("You are not allowed to use the Grand Exchange");
 			return;
 		}
 
+		if (entryMatches(event, "Examine", "Grand Exchange Clerk"))
+		{
+			event.consume();
+			sendChatMessage("They're just standing there...");
+			return;
+		}
 	}
+
 
 	private boolean entryMatches(MenuEntry entry, String option)
 	{
