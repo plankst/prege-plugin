@@ -55,11 +55,12 @@ public class ExamplePlugin extends Plugin
 		{
 			// Send Message to player
 			event.consume();
-			sendChatMessage("Do what? It doesn't exist...");
+			sendChatMessage("You are not allowed to use the grand exhange");
 			return;
 		}
 
 	}
+
 	private boolean entryMatches(MenuEntry entry, String option)
 	{
 		return entry.getOption().equals(option);
