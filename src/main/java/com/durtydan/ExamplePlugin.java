@@ -50,7 +50,7 @@ public class ExamplePlugin extends Plugin
 				|| entryMatches(event, "History", "Grand Exchange Clerk")
 				|| entryMatches(event, "Sets", "Grand Exchange Clerk")
 				|| entryMatches(event, "Talk-to", "Grand Exchange Clerk")
-				|| entryMatches(event, "Exchange", "Grand Exchange booth")
+				|| entryMatches(event, "Exchange", "Grand Exchange booth"))
 		{
 			event.consume();
 			sendChatMessage("You don't seem interested.");
