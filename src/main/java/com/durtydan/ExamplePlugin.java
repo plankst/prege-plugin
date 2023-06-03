@@ -48,7 +48,6 @@ public class ExamplePlugin extends Plugin
 
 		if (entryMatches(event, "Exchange", "Grand Exchange Clerk")
 				|| entryMatches(event, "History", "Grand Exchange Clerk")
-				|| entryMatches(event, "Sets", "Grand Exchange Clerk")
 				|| entryMatches(event, "Talk-to", "Grand Exchange Clerk")
 				|| entryMatches(event, "Exchange", "Grand Exchange booth"))
 		{
