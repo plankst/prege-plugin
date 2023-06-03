@@ -51,19 +51,9 @@ public class ExamplePlugin extends Plugin
 				|| entryMatches(event, "Sets", "Grand Exchange Clerk")
 				|| entryMatches(event, "Talk-to", "Grand Exchange Clerk")
 				|| entryMatches(event, "Exchange", "Grand Exchange booth")
-				|| entryMatches(event, "Collect", "Grand Exchange booth")
-				|| entryMatches(event, "Collect", "Banker")
-				|| entryMatches(event, "Collect", "Bank booth"))
 		{
 			event.consume();
-			return;
-
-		}
-
-		if (entryMatches(event, "Examine", "Grand Exchange Clerk"))
-		{
-			event.consume();
-			sendChatMessage("You don't seem interested in their business.");
+			sendChatMessage("You don't seem interested.");
 			return;
 
 		}
