@@ -1,10 +1,11 @@
 package com.durtydan;
 
+import com.google.inject.Provides;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
-import net.runelite.api.MenuEntry;
+import net.runelite.client.config.ConfigManager;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.chat.ChatMessageManager;
@@ -23,7 +24,10 @@ public class ExamplePlugin extends Plugin
 	@Inject
 	private Client client;
 
-	@Inject
+    @Inject
+    private ExampleConfig config;
+
+    @Inject
 	private ChatMessageManager chatMessageManager;
 
 	@Inject
@@ -45,38 +49,27 @@ public class ExamplePlugin extends Plugin
 	public void onMenuOptionClicked(MenuOptionClicked event)
 	{
 		String target = Text.removeTags(event.getMenuTarget());
-
-		if (entryMatches(event, "Exchange", "Grand Exchange Clerk")
-				|| entryMatches(event, "History", "Grand Exchange Clerk")
-				|| entryMatches(event, "Talk-to", "Grand Exchange Clerk")
-				|| entryMatches(event, "Exchange", "Grand Exchange booth"))
+		//log.info(event.getMenuEntry().getOption());
+		if (event.getMenuEntry().getOption().equals("Create <col=ff9040>Buy</col> offer")==true)
 		{
 			event.consume();
-			sendChatMessage("You don't seem interested.");
+            if (config.sellmode() == true) {
+                sendChatMessage("Pre-GE sell mode prevents you from buying at the Grand Exchange.");
+            }else {
+                sendChatMessage("Pre-GE prevents you from using the Grand Exchange.");
+            }
 			return;
-
 		}
-	}
-
-	private boolean entryMatches(MenuEntry entry, String option)
-	{
-		return entry.getOption().equals(option);
-	}
-
-	private boolean entryMatches(MenuOptionClicked event, String option)
-	{
-		return event.getMenuOption().equals(option);
-	}
-
-	private boolean entryMatches(MenuEntry entry, String option, String target)
-	{
-		return entryMatches(entry, option) && Text.removeTags(entry.getTarget()).equals(target);
-	}
-
-	private boolean entryMatches(MenuOptionClicked event, String option, String target)
-	{
-		return entryMatches(event, option) && Text.removeTags(event.getMenuTarget()).equals(target);
-	}
+        if (event.getMenuEntry().getOption().equals("Create <col=ff9040>Sell</col> offer")==true
+                && config.sellmode() == false)
+        {
+            event.consume();
+            sendChatMessage("Pre-GE prevents you from using the Grand Exchange.");
+            return;
+        }else {
+            return;
+        }
+    }
 
 	private void sendChatMessage(String message)
 	{
@@ -86,5 +79,9 @@ public class ExamplePlugin extends Plugin
 				.build());
 	}
 
-
+    @Provides
+    ExampleConfig provideConfig(ConfigManager configManager)
+    {
+        return configManager.getConfig(ExampleConfig.class);
+    }
 }

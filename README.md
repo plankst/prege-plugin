@@ -1,15 +1,9 @@
 # Pre-GE
-A simple ironman-like plugin that simulates the days before the Grand Exchange by disabling any Grand Exchange related menu options.
-
-**Sets are still allowed**
-
+A simple plugin that simulates the days before the Grand Exchange.
 ## Usage
-This plug-in can be used as a mini ironman mode or for a challenge account allowing every action except using the Grand Exchange.
-
-## Disabled Options
-### Grand Exchange Clerk
-- Talk-to
-- Exchange
-- History
-### Grand Exchange Booth
-- Exchange
+This plugin can be used as an ironman-like mode allowing every action except the Grand Exchange.
+## Chat-Channel
+join "sirdurtydan" for the official Pre-GE chat channel to communicate with other Pre-GE users!
+## Configuration
+### **Sell Mode**
+- Enable selling at the Grand Exchange
