@@ -17,15 +17,12 @@ import net.runelite.client.util.Text;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Pre-GE"
+	name = "Runeman Mode"
 )
 public class ExamplePlugin extends Plugin
 {
 	@Inject
 	private Client client;
-
-    @Inject
-    private ExampleConfig config;
 
     @Inject
 	private ChatMessageManager chatMessageManager;
@@ -36,13 +33,13 @@ public class ExamplePlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("Pre-GE started!");
+		log.info("Runeman Mode started!");
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		log.info("Pre-GE stopped!");
+		log.info("Runeman Mode stopped!");
 	}
 
 	@Subscribe
@@ -53,35 +50,23 @@ public class ExamplePlugin extends Plugin
 		if (event.getMenuEntry().getOption().equals("Create <col=ff9040>Buy</col> offer")==true)
 		{
 			event.consume();
-            if (config.sellmode() == true) {
-                sendChatMessage("Pre-GE sell mode prevents you from buying at the Grand Exchange.");
-            }else {
-                sendChatMessage("Pre-GE prevents you from using the Grand Exchange.");
-            }
+			sendChatMessage("You cannot use the Grand Exchange in Runeman Mode");
 			return;
 		}
-        if (event.getMenuEntry().getOption().equals("Create <col=ff9040>Sell</col> offer")==true
-                && config.sellmode() == false)
+        if (event.getMenuEntry().getOption().equals("Create <col=ff9040>Sell</col> offer")==true)
         {
             event.consume();
-            sendChatMessage("Pre-GE prevents you from using the Grand Exchange.");
+            sendChatMessage("You cannot use the Grand Exchange in Runeman Mode");
             return;
         }else {
             return;
         }
     }
 
-	private void sendChatMessage(String message)
-	{
+	private void sendChatMessage(String message) {
 		chatMessageManager.queue(QueuedMessage.builder()
 				.type(ChatMessageType.CONSOLE)
 				.runeLiteFormattedMessage(message)
 				.build());
 	}
-
-    @Provides
-    ExampleConfig provideConfig(ConfigManager configManager)
-    {
-        return configManager.getConfig(ExampleConfig.class);
-    }
 }
