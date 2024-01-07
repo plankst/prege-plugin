@@ -1,11 +1,10 @@
 package com.durtydan;
 
-import com.google.inject.Provides;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
-import net.runelite.client.config.ConfigManager;
+import net.runelite.api.MenuEntry;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.chat.ChatMessageManager;
@@ -17,7 +16,8 @@ import net.runelite.client.util.Text;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Runeman Mode"
+	name = "Rune Man Mode",
+	description = "Disables the Grand Exchange"
 )
 public class ExamplePlugin extends Plugin
 {
@@ -33,13 +33,13 @@ public class ExamplePlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("Runeman Mode started!");
+		log.info("Rune Man Mode started!");
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		log.info("Runeman Mode stopped!");
+		log.info("Rune Man Mode stopped!");
 	}
 
 	@Subscribe
@@ -47,20 +47,22 @@ public class ExamplePlugin extends Plugin
 	{
 		String target = Text.removeTags(event.getMenuTarget());
 		//log.info(event.getMenuEntry().getOption());
-		if (event.getMenuEntry().getOption().equals("Create <col=ff9040>Buy</col> offer")==true)
+		if (
+				entryMatches(event, "Exchange", "Grand Exchange Clerk")
+				|| entryMatches(event, "Talk-to", "Grand Exchange Clerk")
+				|| entryMatches(event, "History", "Grand Exchange Clerk")
+				|| entryMatches(event, "Sets", "Grand Exchange Clerk")
+				|| entryMatches(event, "Collect", "Grand Exchange booth")
+				|| entryMatches(event, "Exchange", "Grand Exchange booth")
+				|| entryMatches(event, "Collect", "Banker")
+				|| entryMatches(event, "Collect", "Bank booth")
+				|| entryMatches(event, "Collect", "Bank chest")
+		)
 		{
 			event.consume();
-			sendChatMessage("You cannot use the Grand Exchange in Runeman Mode");
+			sendChatMessage("You are a Rune Man. You cannot use the Grand Exchange.");
 			return;
 		}
-        if (event.getMenuEntry().getOption().equals("Create <col=ff9040>Sell</col> offer")==true)
-        {
-            event.consume();
-            sendChatMessage("You cannot use the Grand Exchange in Runeman Mode");
-            return;
-        }else {
-            return;
-        }
     }
 
 	private void sendChatMessage(String message) {
@@ -69,4 +71,24 @@ public class ExamplePlugin extends Plugin
 				.runeLiteFormattedMessage(message)
 				.build());
 	}
+	private boolean entryMatches(MenuEntry entry, String option)
+	{
+		return entry.getOption().equals(option);
+	}
+
+	private boolean entryMatches(MenuOptionClicked event, String option)
+	{
+		return event.getMenuOption().equals(option);
+	}
+
+	private boolean entryMatches(MenuEntry entry, String option, String target)
+	{
+		return entryMatches(entry, option) && Text.removeTags(entry.getTarget()).equals(target);
+	}
+
+	private boolean entryMatches(MenuOptionClicked event, String option, String target)
+	{
+		return entryMatches(event, option) && Text.removeTags(event.getMenuTarget()).equals(target);
+	}
+
 }

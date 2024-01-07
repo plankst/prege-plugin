@@ -1,7 +1,8 @@
-# Runeman Mode (*formally Pre-GE*)
-A simple plugin that restricts the Grand Exchange.
-## Usage
-This plugin can be used as an ironman-like mode allowing every action except the Grand Exchange.
+# Rune Man Mode (*formally Pre-GE*)
+A simple plugin that adds an ironman-like mode which disables actions related to the Grand Exchange.
 ### Disabled Actions
-- Create Buy offer
-- Create Sell offer
+- Collect, Talk-to, History, Sets, Exchange Grand Exchange clerk
+- Collect, Exchange Grand Exchange booth
+- Collect Banker
+- Collect Bank booth
+- Collect Bank chest
