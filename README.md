@@ -6,3 +6,5 @@ A simple plugin that adds an ironman-like mode which disables actions related to
 - Collect: Banker
 - Collect: Bank booth
 - Collect: Bank chest
+
+*Relive the days before the Grand Exchange.*
