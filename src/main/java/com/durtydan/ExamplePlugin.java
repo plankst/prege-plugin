@@ -16,7 +16,7 @@ import net.runelite.client.util.Text;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Rune Man Mode",
+	name = "Runeman Mode",
 	description = "Disables the Grand Exchange"
 )
 public class ExamplePlugin extends Plugin
