@@ -33,13 +33,13 @@ public class ExamplePlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("Rune Man Mode started!");
+		log.info("Runeman Mode started!");
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		log.info("Rune Man Mode stopped!");
+		log.info("Runeman Mode stopped!");
 	}
 
 	@Subscribe
