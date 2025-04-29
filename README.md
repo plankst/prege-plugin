@@ -1,4 +1,4 @@
-# Copperman Mode (*formally Pre-GE*)
+# Copperman Mode (*aka Pre-GE*)
 A simple plugin which disables actions related to the Grand Exchange.
 ### Disabled Actions
 - Grand Exchange clerk: *Talk-to, History, Sets, Exchange*
