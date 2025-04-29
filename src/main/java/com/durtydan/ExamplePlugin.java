@@ -16,7 +16,7 @@ import net.runelite.client.util.Text;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Runeman Mode",
+	name = "Copperman Mode",
 	description = "Disables the Grand Exchange"
 )
 public class ExamplePlugin extends Plugin
@@ -33,34 +33,29 @@ public class ExamplePlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("Runeman Mode started!");
+		log.info("Copperman Mode started!");
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		log.info("Runeman Mode stopped!");
+		log.info("Copperman Mode stopped!");
 	}
 
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked event)
 	{
 		String target = Text.removeTags(event.getMenuTarget());
-		//log.info(event.getMenuEntry().getOption());
 		if (
 				entryMatches(event, "Exchange", "Grand Exchange Clerk")
-				|| entryMatches(event, "Talk-to", "Grand Exchange Clerk")
-				|| entryMatches(event, "History", "Grand Exchange Clerk")
-				|| entryMatches(event, "Sets", "Grand Exchange Clerk")
-				|| entryMatches(event, "Collect", "Grand Exchange booth")
-				|| entryMatches(event, "Exchange", "Grand Exchange booth")
-				|| entryMatches(event, "Collect", "Banker")
-				|| entryMatches(event, "Collect", "Bank booth")
-				|| entryMatches(event, "Collect", "Bank chest")
+						|| entryMatches(event, "Talk-to", "Grand Exchange Clerk")
+						|| entryMatches(event, "History", "Grand Exchange Clerk")
+						|| entryMatches(event, "Sets", "Grand Exchange Clerk")
+						|| entryMatches(event, "Exchange", "Grand Exchange booth")
 		)
 		{
 			event.consume();
-			sendChatMessage("You are a Rune Man. You cannot use the Grand Exchange.");
+			sendChatMessage("You are a Copperman. You cannot use the Grand Exchange.");
 			return;
 		}
     }
