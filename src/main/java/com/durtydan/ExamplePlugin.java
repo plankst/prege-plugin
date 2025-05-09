@@ -16,11 +16,14 @@ import net.runelite.client.util.Text;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Copperman Mode",
+	name = "Pre-GE",
 	description = "Disables the Grand Exchange"
 )
 public class ExamplePlugin extends Plugin
 {
+	@Inject
+	private PlayerNameIconManager playerNameIconManager;
+
 	@Inject
 	private Client client;
 
@@ -33,13 +36,13 @@ public class ExamplePlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("Copperman Mode started!");
+		log.info("Pre-GE started!");
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		log.info("Copperman Mode stopped!");
+		log.info("Pre-GE stopped!");
 	}
 
 	@Subscribe
@@ -55,7 +58,7 @@ public class ExamplePlugin extends Plugin
 		)
 		{
 			event.consume();
-			sendChatMessage("You are a Copperman. You cannot use the Grand Exchange.");
+			sendChatMessage("A mystical force prevents you from using the Grand Exchange.");
 			return;
 		}
     }
