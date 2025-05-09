@@ -4,7 +4,7 @@ A simple plugin which disables actions related to the Grand Exchange.
 - Grand Exchange clerk: *Talk-to, History, Sets, Exchange*
 - Grand Exchange booth: *Exchange*
 
-*Collect is left enabled.*
+*Collect is left enabled as a safety measure*
 
 ### Wasn't this called "Rune Man"?
 Yes. The name and icon was reverted to stay true to its roots.
