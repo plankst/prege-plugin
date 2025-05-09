@@ -7,5 +7,5 @@ A simple plugin which disables actions related to the Grand Exchange.
 *Collect is left enabled.*
 
 ### Wasn't this called "Rune Man"?
-Yes. The name was reverted to stay true to its roots.
+Yes. The name and icon was reverted to stay true to its roots.
 
