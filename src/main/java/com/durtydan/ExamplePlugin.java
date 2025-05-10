@@ -22,9 +22,6 @@ import net.runelite.client.util.Text;
 public class ExamplePlugin extends Plugin
 {
 	@Inject
-	private PlayerNameIconManager playerNameIconManager;
-
-	@Inject
 	private Client client;
 
     @Inject
